@@ -12,14 +12,7 @@ public class BookingApplication {
     private static final BookingService bookingService = new BookingService();
 
     public static void main(String[] args) {
-
-        /*try {
-            testDates();
-        }
-        catch (IOException ioException){
-            ioException.printStackTrace();
-        }*/
-
+        
         int port = 1717;
 
         MuServer server = MuServerBuilder.httpServer()
@@ -30,20 +23,6 @@ public class BookingApplication {
                 .start();
 
         System.out.println("Server started at " + server.uri());
-    }
-
-    public static void testDates() throws IOException {
-
-        Booking booking =
-                new Booking("Matt Prior", 5,
-                        LocalDateTime.of(2023, 10, 1, 19, 0));
-
-        String json = JsonUtils.toJson(booking);
-        System.out.println("Serialized book: " + json);
-
-        Booking newBooking = JsonUtils.fromJson(json, Booking.class);
-        System.out.println("Deserialized book: " + newBooking);
-
     }
 
 }
